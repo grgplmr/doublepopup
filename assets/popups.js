@@ -34,4 +34,17 @@
             $('#wdp-popup-exit').fadeOut(120);
         });
     }
+
+    // Fermeture via la touche Escape
+    $(document).on('keydown', function(e){
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            if ($('#wdp-popup-main').is(':visible')) {
+                $('#wdp-popup-main').fadeOut(120);
+                setOnce('wdp_main_popup');
+            }
+            if ($('#wdp-popup-exit').is(':visible')) {
+                $('#wdp-popup-exit').fadeOut(120);
+            }
+        }
+    });
 })(jQuery);
