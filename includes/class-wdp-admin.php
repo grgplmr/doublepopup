@@ -34,6 +34,7 @@ class WDP_Admin {
         $output['main_text']   = wp_kses_post( $input['main_text'] );
         $output['main_font']   = sanitize_text_field( $input['main_font'] );
         $output['main_size']   = intval( $input['main_size'] );
+        $output['main_width']  = intval( $input['main_width'] );
         $output['main_color']  = sanitize_hex_color( $input['main_color'] );
         $output['main_bg']     = sanitize_hex_color( $input['main_bg'] );
 
@@ -42,6 +43,7 @@ class WDP_Admin {
         $output['exit_text']   = wp_kses_post( $input['exit_text'] );
         $output['exit_font']   = sanitize_text_field( $input['exit_font'] );
         $output['exit_size']   = intval( $input['exit_size'] );
+        $output['exit_width']  = intval( $input['exit_width'] );
         $output['exit_color']  = sanitize_hex_color( $input['exit_color'] );
         $output['exit_bg']     = sanitize_hex_color( $input['exit_bg'] );
 
@@ -59,12 +61,14 @@ class WDP_Admin {
             'main_text'   => '🎉 Découvrez notre événement annuel le 12 juillet à Bordeaux !',
             'main_font'   => 'Roboto',
             'main_size'   => 18,
+            'main_width'  => 340,
             'main_color'  => '#222222',
             'main_bg'     => '#ffffff',
             'exit_enable' => 1,
             'exit_text'   => 'Vous nous quittez déjà ? Abonnez-vous à notre newsletter pour ne rien manquer !',
             'exit_font'   => 'Roboto',
             'exit_size'   => 18,
+            'exit_width'  => 340,
             'exit_color'  => '#222222',
             'exit_bg'     => '#ffffff',
         ));
@@ -96,6 +100,10 @@ class WDP_Admin {
                     <div>
                         <label>Taille :</label>
                         <input type="number" name="wdp_settings[main_size]" value="<?php echo esc_attr($settings['main_size']); ?>" min="10" max="40"> px
+                    </div>
+                    <div>
+                        <label>Largeur :</label>
+                        <input type="number" name="wdp_settings[main_width]" value="<?php echo esc_attr($settings['main_width']); ?>" min="200" max="600"> px
                     </div>
                     <div>
                         <label>Couleur texte :</label>
@@ -133,6 +141,10 @@ class WDP_Admin {
                         <input type="number" name="wdp_settings[exit_size]" value="<?php echo esc_attr($settings['exit_size']); ?>" min="10" max="40"> px
                     </div>
                     <div>
+                        <label>Largeur :</label>
+                        <input type="number" name="wdp_settings[exit_width]" value="<?php echo esc_attr($settings['exit_width']); ?>" min="200" max="600"> px
+                    </div>
+                    <div>
                         <label>Couleur texte :</label>
                         <input type="color" name="wdp_settings[exit_color]" value="<?php echo esc_attr($settings['exit_color']); ?>">
                     </div>
@@ -148,13 +160,13 @@ class WDP_Admin {
             <div style="display:flex;gap:40px;">
                 <div>
                     <strong>Popup principal</strong>
-                    <div style="margin-top:10px;padding:20px;background:<?php echo esc_attr($settings['main_bg']); ?>;color:<?php echo esc_attr($settings['main_color']); ?>;font-family:<?php echo esc_attr($settings['main_font']); ?>;font-size:<?php echo esc_attr($settings['main_size']); ?>px;max-width:320px;border-radius:12px;">
+                    <div style="margin-top:10px;padding:20px;background:<?php echo esc_attr($settings['main_bg']); ?>;color:<?php echo esc_attr($settings['main_color']); ?>;font-family:<?php echo esc_attr($settings['main_font']); ?>;font-size:<?php echo esc_attr($settings['main_size']); ?>px;max-width:<?php echo esc_attr($settings['main_width']); ?>px;border-radius:12px;">
                         <?php echo wp_kses_post($settings['main_text']); ?>
                     </div>
                 </div>
                 <div>
                     <strong>Popup sortie</strong>
-                    <div style="margin-top:10px;padding:20px;background:<?php echo esc_attr($settings['exit_bg']); ?>;color:<?php echo esc_attr($settings['exit_color']); ?>;font-family:<?php echo esc_attr($settings['exit_font']); ?>;font-size:<?php echo esc_attr($settings['exit_size']); ?>px;max-width:320px;border-radius:12px;">
+                    <div style="margin-top:10px;padding:20px;background:<?php echo esc_attr($settings['exit_bg']); ?>;color:<?php echo esc_attr($settings['exit_color']); ?>;font-family:<?php echo esc_attr($settings['exit_font']); ?>;font-size:<?php echo esc_attr($settings['exit_size']); ?>px;max-width:<?php echo esc_attr($settings['exit_width']); ?>px;border-radius:12px;">
                         <?php echo wp_kses_post($settings['exit_text']); ?>
                     </div>
                 </div>
