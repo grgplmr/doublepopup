@@ -7,23 +7,27 @@
         try { return sessionStorage.getItem(key) === '1'; } catch(e){ return false; }
     }
     // Popup principal
-    if (wdpPopups.main_enable && wdpPopups.is_home && !wasShown('wdp_main_popup')) {
+    if (wdpPopups.main_enable && wdpPopups.is_home && (!wdpPopups.main_once || !wasShown('wdp_main_popup'))) {
         setTimeout(function(){
             $('#wdp-popup-main').fadeIn(180);
         }, 2000);
         $('#wdp-popup-main .wdp-close').on('click', function(){
             $('#wdp-popup-main').fadeOut(120);
-            setOnce('wdp_main_popup');
+            if (wdpPopups.main_once) {
+                setOnce('wdp_main_popup');
+            }
         });
     }
     // Popup sortie (exit intent)
-    if (wdpPopups.exit_enable && !wasShown('wdp_exit_popup')) {
+    if (wdpPopups.exit_enable && (!wdpPopups.exit_once || !wasShown('wdp_exit_popup'))) {
         var exitShown = false;
         function showExit() {
             if (!exitShown) {
                 $('#wdp-popup-exit').fadeIn(180);
                 exitShown = true;
-                setOnce('wdp_exit_popup');
+                if (wdpPopups.exit_once) {
+                    setOnce('wdp_exit_popup');
+                }
             }
         }
         // Détection souris vers barre (desktop uniquement)
