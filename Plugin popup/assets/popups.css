@@ -1,0 +1,42 @@
+.wdp-popup {
+    position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+z-index: 9999;
+max-width: 391px;         /* 340px + 15% = 391px */
+min-width: 253px;         /* 220px + 15% = 253px */
+box-shadow: 0 6px 32px rgba(0, 0, 0, 0.22), 0 4px 30px rgba(0, 0, 0, 0.15);
+border-radius: 16px;      /* Légère augmentation pour plus de douceur */
+padding: 32px 24px 23px 24px; /* 28px + 15% ≈ 32px (haut), 20px + 15% ≈ 23px (bas), largeur inchangée */
+text-align: center;
+transition: opacity 0.25s;
+opacity: 0.98;
+background: rgba(255, 255, 255, 0.18); /* Légèrement plus opaque */
+backdrop-filter: blur(6px);             /* Flou plus marqué */
+-webkit-backdrop-filter: blur(8px);
+border: 1px solid rgba(255, 255, 255, 0.35);
+
+}
+.wdp-close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    line-height: 1;
+}
+.wdp-popup .wdp-content {
+    margin-top: 8px;
+    word-break: break-word;
+}
+@media (max-width:600px) {
+    .wdp-popup {
+        max-width: 90vw;
+        padding: 18px 8vw 10px 8vw;
+        font-size: 16px !important;
+    }
+}
