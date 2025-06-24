@@ -34,14 +34,14 @@ class WDP_Frontend {
         <!-- Popup principal -->
         <?php if ( !empty($settings['main_enable']) && is_front_page() ) : ?>
         <div id="wdp-popup-main" class="wdp-popup" style="display:none;background:<?php echo esc_attr($settings['main_bg']); ?>;color:<?php echo esc_attr($settings['main_color']); ?>;font-family:<?php echo esc_attr($settings['main_font']); ?>;font-size:<?php echo esc_attr($settings['main_size']); ?>px;">
-            <button class="wdp-close" aria-label="Fermer">&times;</button>
+            <button class="wdp-close" aria-label="<?php esc_attr_e( 'Fermer', 'wp-double-popups' ); ?>">&times;</button>
             <div class="wdp-content"><?php echo wp_kses_post($settings['main_text']); ?></div>
         </div>
         <?php endif; ?>
         <!-- Popup sortie -->
         <?php if ( !empty($settings['exit_enable']) ) : ?>
         <div id="wdp-popup-exit" class="wdp-popup" style="display:none;background:<?php echo esc_attr($settings['exit_bg']); ?>;color:<?php echo esc_attr($settings['exit_color']); ?>;font-family:<?php echo esc_attr($settings['exit_font']); ?>;font-size:<?php echo esc_attr($settings['exit_size']); ?>px;">
-            <button class="wdp-close" aria-label="Fermer">&times;</button>
+            <button class="wdp-close" aria-label="<?php esc_attr_e( 'Fermer', 'wp-double-popups' ); ?>">&times;</button>
             <div class="wdp-content"><?php echo wp_kses_post($settings['exit_text']); ?></div>
         </div>
         <?php endif; ?>

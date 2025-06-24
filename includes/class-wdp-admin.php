@@ -14,8 +14,8 @@ class WDP_Admin {
 
     public function register_menu() {
         add_options_page(
-            'Double Popups',
-            'Double Popups',
+            __( 'Double Popups', 'wp-double-popups' ),
+            __( 'Double Popups', 'wp-double-popups' ),
             'manage_options',
             'wdp_settings',
             array( $this, 'settings_page' )
@@ -70,14 +70,14 @@ class WDP_Admin {
         ));
         ?>
         <div class="wrap wdp-settings">
-            <h1>Réglages Double Popups</h1>
+            <h1><?php _e( 'Réglages Double Popups', 'wp-double-popups' ); ?></h1>
             <form method="post" action="options.php">
                 <?php settings_fields( 'wdp_settings_group' ); ?>
 
-                <h2>Popup principal (Page d’accueil)</h2>
-                <label><input type="checkbox" name="wdp_settings[main_enable]" value="1" <?php checked( $settings['main_enable'], 1 ); ?>> Activer le popup principal</label>
+                <h2><?php _e( 'Popup principal (Page d\'accueil)', 'wp-double-popups' ); ?></h2>
+                <label><input type="checkbox" name="wdp_settings[main_enable]" value="1" <?php checked( $settings['main_enable'], 1 ); ?>> <?php _e( 'Activer le popup principal', 'wp-double-popups' ); ?></label>
                 <br>
-                <label>Texte :</label>
+                <label><?php _e( 'Texte :', 'wp-double-popups' ); ?></label>
                 <?php wp_editor( $settings['main_text'], 'wdp_settings_main_text', array(
                     'textarea_name' => 'wdp_settings[main_text]',
                     'textarea_rows' => 3,
@@ -86,7 +86,7 @@ class WDP_Admin {
                 )); ?>
                 <div class="wdp-flex">
                     <div>
-                        <label>Police :</label>
+                        <label><?php _e( 'Police :', 'wp-double-popups' ); ?></label>
                         <select name="wdp_settings[main_font]">
                             <?php foreach ( $this->get_fonts() as $font ): ?>
                                 <option value="<?php echo esc_attr($font); ?>" <?php selected( $settings['main_font'], $font ); ?>><?php echo esc_html($font); ?></option>
@@ -94,25 +94,25 @@ class WDP_Admin {
                         </select>
                     </div>
                     <div>
-                        <label>Taille :</label>
+                        <label><?php _e( 'Taille :', 'wp-double-popups' ); ?></label>
                         <input type="number" name="wdp_settings[main_size]" value="<?php echo esc_attr($settings['main_size']); ?>" min="10" max="40"> px
                     </div>
                     <div>
-                        <label>Couleur texte :</label>
+                        <label><?php _e( 'Couleur texte :', 'wp-double-popups' ); ?></label>
                         <input type="color" name="wdp_settings[main_color]" value="<?php echo esc_attr($settings['main_color']); ?>">
                     </div>
                     <div>
-                        <label>Fond :</label>
+                        <label><?php _e( 'Fond :', 'wp-double-popups' ); ?></label>
                         <input type="color" name="wdp_settings[main_bg]" value="<?php echo esc_attr($settings['main_bg']); ?>">
                     </div>
                 </div>
 
                 <hr>
 
-                <h2>Popup de sortie</h2>
-                <label><input type="checkbox" name="wdp_settings[exit_enable]" value="1" <?php checked( $settings['exit_enable'], 1 ); ?>> Activer le popup sortie</label>
+                <h2><?php _e( 'Popup de sortie', 'wp-double-popups' ); ?></h2>
+                <label><input type="checkbox" name="wdp_settings[exit_enable]" value="1" <?php checked( $settings['exit_enable'], 1 ); ?>> <?php _e( 'Activer le popup sortie', 'wp-double-popups' ); ?></label>
                 <br>
-                <label>Texte :</label>
+                <label><?php _e( 'Texte :', 'wp-double-popups' ); ?></label>
                 <?php wp_editor( $settings['exit_text'], 'wdp_settings_exit_text', array(
                     'textarea_name' => 'wdp_settings[exit_text]',
                     'textarea_rows' => 3,
@@ -121,7 +121,7 @@ class WDP_Admin {
                 )); ?>
                 <div class="wdp-flex">
                     <div>
-                        <label>Police :</label>
+                        <label><?php _e( 'Police :', 'wp-double-popups' ); ?></label>
                         <select name="wdp_settings[exit_font]">
                             <?php foreach ( $this->get_fonts() as $font ): ?>
                                 <option value="<?php echo esc_attr($font); ?>" <?php selected( $settings['exit_font'], $font ); ?>><?php echo esc_html($font); ?></option>
@@ -129,31 +129,31 @@ class WDP_Admin {
                         </select>
                     </div>
                     <div>
-                        <label>Taille :</label>
+                        <label><?php _e( 'Taille :', 'wp-double-popups' ); ?></label>
                         <input type="number" name="wdp_settings[exit_size]" value="<?php echo esc_attr($settings['exit_size']); ?>" min="10" max="40"> px
                     </div>
                     <div>
-                        <label>Couleur texte :</label>
+                        <label><?php _e( 'Couleur texte :', 'wp-double-popups' ); ?></label>
                         <input type="color" name="wdp_settings[exit_color]" value="<?php echo esc_attr($settings['exit_color']); ?>">
                     </div>
                     <div>
-                        <label>Fond :</label>
+                        <label><?php _e( 'Fond :', 'wp-double-popups' ); ?></label>
                         <input type="color" name="wdp_settings[exit_bg]" value="<?php echo esc_attr($settings['exit_bg']); ?>">
                     </div>
                 </div>
                 <hr>
                 <?php submit_button(); ?>
             </form>
-            <h2>Aperçu (après sauvegarde des réglages)</h2>
+            <h2><?php _e( 'Aperçu (après sauvegarde des réglages)', 'wp-double-popups' ); ?></h2>
             <div style="display:flex;gap:40px;">
                 <div>
-                    <strong>Popup principal</strong>
+                    <strong><?php _e( 'Popup principal', 'wp-double-popups' ); ?></strong>
                     <div style="margin-top:10px;padding:20px;background:<?php echo esc_attr($settings['main_bg']); ?>;color:<?php echo esc_attr($settings['main_color']); ?>;font-family:<?php echo esc_attr($settings['main_font']); ?>;font-size:<?php echo esc_attr($settings['main_size']); ?>px;max-width:320px;border-radius:12px;">
                         <?php echo wp_kses_post($settings['main_text']); ?>
                     </div>
                 </div>
                 <div>
-                    <strong>Popup sortie</strong>
+                    <strong><?php _e( 'Popup sortie', 'wp-double-popups' ); ?></strong>
                     <div style="margin-top:10px;padding:20px;background:<?php echo esc_attr($settings['exit_bg']); ?>;color:<?php echo esc_attr($settings['exit_color']); ?>;font-family:<?php echo esc_attr($settings['exit_font']); ?>;font-size:<?php echo esc_attr($settings['exit_size']); ?>px;max-width:320px;border-radius:12px;">
                         <?php echo wp_kses_post($settings['exit_text']); ?>
                     </div>
