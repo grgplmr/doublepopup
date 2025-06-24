@@ -1,22 +1,13 @@
 .wdp-popup {
     position: fixed;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
-z-index: 9999;
-max-width: 391px;         /* 340px + 15% = 391px */
-min-width: 253px;         /* 220px + 15% = 253px */
-box-shadow: 0 6px 32px rgba(0, 0, 0, 0.22), 0 4px 30px rgba(0, 0, 0, 0.15);
-border-radius: 16px;      /* Légère augmentation pour plus de douceur */
-padding: 32px 24px 23px 24px; /* 28px + 15% ≈ 32px (haut), 20px + 15% ≈ 23px (bas), largeur inchangée */
-text-align: center;
-transition: opacity 0.25s;
-opacity: 0.98;
-background: rgba(255, 255, 255, 0.18); /* Légèrement plus opaque */
-backdrop-filter: blur(6px);             /* Flou plus marqué */
--webkit-backdrop-filter: blur(8px);
-border: 1px solid rgba(255, 255, 255, 0.35);
-
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 32px 24px 23px 24px;
+    text-align: center;
+    transition: opacity 0.25s;
+    opacity: 0.98;
 }
 .wdp-close {
     position: absolute;
@@ -39,4 +30,13 @@ border: 1px solid rgba(255, 255, 255, 0.35);
         padding: 18px 8vw 10px 8vw;
         font-size: 16px !important;
     }
+}
+.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 7px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
